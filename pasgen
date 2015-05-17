@@ -1,0 +1,5 @@
+#!/usr/bin/evn python3
+
+import passwordgenerator.pasgen as pasgen
+
+pasgen.main()

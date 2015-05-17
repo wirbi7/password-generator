@@ -1,11 +1,13 @@
 from gi.repository import Gtk, Pango
-import sys
 from random import choice
+import os
 
 capital_letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 lower_letters   = 'abcdefghijklmnopqrstuvwxyz'
 digits          = '1234567890'
 symbols         = '!"#;%:?*()_+=-~/\<>,.[]{}'
+
+builder = Gtk.Builder()
 
 
 class Handler:
@@ -39,14 +41,14 @@ class Handler:
             builder.get_object('textbuffer').set_text(text)
 
 
-builder = Gtk.Builder()
-builder.add_from_file("pasgen.glade")
-builder.connect_signals(Handler())
+def main():
+    builder.add_from_file(os.path.join(os.path.dirname(os.path.abspath(__file__)), "pasgen.glade"))
+    builder.connect_signals(Handler())
 
-builder.get_object("textview").modify_font(Pango.FontDescription('monospace'))
-Handler().generate(None)
+    builder.get_object("textview").modify_font(Pango.FontDescription('monospace'))
+    Handler().generate(None)
 
-window = builder.get_object("windowMain")
-window.show_all()
+    window = builder.get_object("windowMain")
+    window.show_all()
 
-Gtk.main()
+    Gtk.main()
