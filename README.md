@@ -5,3 +5,8 @@ Little Linux Password Generator written on Python 3 with Gtk
 ```
 sudo pip3 install password-generator-gtk
 ```
+## Run
+```
+pasgen
+```
+Run it in command line
